@@ -7,16 +7,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LXReorderableCollectionViewFlowLayout : UICollectionViewFlowLayout <UIGestureRecognizerDelegate>
-
-@property (assign, nonatomic) CGFloat scrollingSpeed;
-@property (assign, nonatomic) UIEdgeInsets scrollingTriggerEdgeInsets;
-@property (strong, nonatomic, readonly) UILongPressGestureRecognizer *longPressGestureRecognizer;
-@property (strong, nonatomic, readonly) UIPanGestureRecognizer *panGestureRecognizer;
-
-- (void)setUpGestureRecognizersOnCollectionView __attribute__((deprecated("Calls to setUpGestureRecognizersOnCollectionView method are not longer needed as setup are done automatically through KVO.")));
-
-@end
 
 @protocol LXReorderableCollectionViewDataSource <UICollectionViewDataSource>
 
@@ -37,5 +27,19 @@
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+@interface LXReorderableCollectionViewFlowLayout : UICollectionViewFlowLayout <UIGestureRecognizerDelegate>
+
+@property (assign, nonatomic) CGFloat scrollingSpeed;
+@property (assign, nonatomic) UIEdgeInsets scrollingTriggerEdgeInsets;
+@property (strong, nonatomic, readonly) UILongPressGestureRecognizer *longPressGestureRecognizer;
+@property (strong, nonatomic, readonly) UIPanGestureRecognizer *panGestureRecognizer;
+
+@property (assign, nonatomic) id<LXReorderableCollectionViewDataSource> dataSource;
+@property (assign, nonatomic) id<LXReorderableCollectionViewDelegateFlowLayout> delegate;
+
+- (void)setUpGestureRecognizersOnCollectionView __attribute__((deprecated("Calls to setUpGestureRecognizersOnCollectionView method are not longer needed as setup are done automatically through KVO.")));
 
 @end
