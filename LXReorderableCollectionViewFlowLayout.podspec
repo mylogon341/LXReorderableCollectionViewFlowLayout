@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.author = 'Stan Chang Khin Boon'
   s.source = {
     :git => 'https://github.com/lxcid/LXReorderableCollectionViewFlowLayout.git',
-    :tag => '0.1.2'
+    :tag => s.version.to_s
   }
   s.platform = :ios, '8.0'
   s.source_files = 'LXReorderableCollectionViewFlowLayout/'
